@@ -11,7 +11,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.util.StringUtils;
+
 import com.example.mercadinho.model.Produto;
+import com.example.mercadinho.model.Produto_;
 import com.example.mercadinho.repository.filter.ProdutoFilter;
 
 public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
@@ -37,6 +40,10 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
 	private Predicate[] criarRestricoes(ProdutoFilter produtoFilter, CriteriaBuilder builder, Root<Produto> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		
+		if(!StringUtils.isEmpty(produtoFilter.getNome())) {
+			predicates.add(builder.like(builder.lower(root.get(Produto_.nome)),
+					"%"+produtoFilter.getNome().toLowerCase()+"%"));
+		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
