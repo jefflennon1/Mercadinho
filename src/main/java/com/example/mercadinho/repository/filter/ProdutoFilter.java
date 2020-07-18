@@ -14,10 +14,10 @@ public class ProdutoFilter {
 	private BigDecimal valorMaiorQue;		
 	private BigDecimal valorMenorQue;
 	
-	@DateTimeFormat
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate validadeMenorQue;
 	
-	@DateTimeFormat
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate validadeMaiorQue;
 
 	public String getDescricao() {

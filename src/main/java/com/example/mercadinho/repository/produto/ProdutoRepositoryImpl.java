@@ -49,6 +49,25 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
 					"%"+produtoFilter.getDescricao().toLowerCase()+"%"));
 		}
 		
+		if(!StringUtils.isEmpty(produtoFilter.getValorMaiorQue())) {
+			predicates.add(builder.greaterThanOrEqualTo(root.get(Produto_.valor),
+					produtoFilter.getValorMaiorQue()));
+		}
+		
+		if(!StringUtils.isEmpty(produtoFilter.getValorMenorQue())) {
+			predicates.add(builder.lessThanOrEqualTo(root.get(Produto_.valor),
+					produtoFilter.getValorMenorQue()));
+		}
+		
+		if(!StringUtils.isEmpty(produtoFilter.getValidadeMaiorQue())) {
+			predicates.add(builder.greaterThanOrEqualTo(root.get(Produto_.validade),
+					produtoFilter.getValidadeMaiorQue()));
+		}
+		if(!StringUtils.isEmpty(produtoFilter.getValidadeMenorQue())) {
+			predicates.add(builder.lessThanOrEqualTo(root.get(Produto_.validade),
+					produtoFilter.getValidadeMenorQue()));
+		}
+		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 
