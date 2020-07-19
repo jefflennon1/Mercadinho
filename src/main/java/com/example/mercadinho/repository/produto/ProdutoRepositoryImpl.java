@@ -11,6 +11,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.example.mercadinho.model.Produto;
@@ -23,19 +26,21 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
 	private EntityManager manager;
 	
 	@Override
-	public List<Produto> filtrar(ProdutoFilter produtoFilter) {
+	public Page<Produto> filtrar(ProdutoFilter produtoFilter, Pageable pageable) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteria = builder.createQuery(Produto.class);
 		Root<Produto> root = criteria.from(Produto.class);
-
 		
 		Predicate[] predicates = criarRestricoes(produtoFilter, builder, root);
 		criteria.where(predicates);
-		
-		
+			
 		TypedQuery<Produto> query = manager.createQuery(criteria);
-		return query.getResultList();
+		adicionarPaginacao(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(produtoFilter));
 		}
+
+	
 
 	private Predicate[] criarRestricoes(ProdutoFilter produtoFilter, CriteriaBuilder builder, Root<Produto> root) {
 		List<Predicate> predicates = new ArrayList<>();
@@ -69,6 +74,26 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
+	}
+	
+	private Long total(ProdutoFilter produtoFilter) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		Root<Produto> root = criteria.from(Produto.class);
+		
+		Predicate[] predicates = criarRestricoes(produtoFilter, builder, root);
+		criteria.where(predicates);
+		criteria.select(builder.count(root));
+		return manager.createQuery(criteria).getSingleResult();
+	}
+
+	private void adicionarPaginacao(TypedQuery<Produto> query, Pageable pageable) {
+		int paginaAtual = pageable.getPageNumber();
+		int registrosPorPagina = pageable.getPageSize();
+		int primeiroRegistroDaPagina = paginaAtual * registrosPorPagina;
+		
+		query.setFirstResult(primeiroRegistroDaPagina);
+		query.setMaxResults(registrosPorPagina);
 	}
 
 }
