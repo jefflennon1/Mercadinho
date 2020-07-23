@@ -3,14 +3,15 @@ CREATE TABLE pessoa(
 	nome VARCHAR(100) NOT NULL,
 	rua VARCHAR(100),
 	bairro VARCHAR(50),
-	numero int(10)	
+	numero int(10),
+	telefone INT(12)
 )ENGINE=innoDB  DEFAULT CHARSET=utf8;
 
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("HUGO MENEZES", "MARCILIO FARIAS", "AEROLÂNDIA", 2320);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("MARIA FARIAS", "PASTEUR", "PIRAMBU", 1000);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("HELENA CASTRO SILVA", "CORONEL ALMIRANTE FIILHO", "BOM JARDIM", 160);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("CARLOS BARBOSA DE FREITAS", "PROFESSOR ALBER JR", "BARRA DO CEARÁ", 1500);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("EMILY BRITTO", "CONDE DA ALVORADA", "JOQUIM TÁVORA", 020);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("JOSIAS DA SILVA", "AV CORONEL DE CARV", "ALDEOTA", 99975);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("MARCONDES", "J DA PENHA", "CENTRO", 10);
-INSERT INTO pessoa(nome,rua,bairro,numero) VALUES ("MARILIA GABRILA VIREIRA", "JOSE BONIFACIO", "MESSEJANA", 1003);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("HUGO MENEZES", "MARCILIO FARIAS", "AEROLÂNDIA", 2320,77777777);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("MARIA FARIAS", "PASTEUR", "PIRAMBU", 1000,7777777);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("HELENA CASTRO SILVA", "CORONEL ALMIRANTE FIILHO", "BOM JARDIM", 160, 88888888);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("CARLOS BARBOSA DE FREITAS", "PROFESSOR ALBER JR", "BARRA DO CEARÁ", 1500, 99999999);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("EMILY BRITTO", "CONDE DA ALVORADA", "JOQUIM TÁVORA", 020, 77777777);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("JOSIAS DA SILVA", "AV CORONEL DE CARV", "ALDEOTA", 99975, 444444444);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("MARCONDES", "J DA PENHA", "CENTRO", 10.,9999999);
+INSERT INTO pessoa(nome,rua,bairro,numero,telefone) VALUES ("MARILIA GABRILA VIREIRA", "JOSE BONIFACIO", "MESSEJANA", 1003, 88888888);

@@ -25,7 +25,7 @@ public class Pessoa {
 	@Embedded
 	private Logradouro lougradouro;
 
-	private Number telefone;
+	private Long telefone;
 
 	@Override
 	public int hashCode() {
@@ -59,11 +59,11 @@ public class Pessoa {
 		this.lougradouro = lougradouro;
 	}
 
-	public Number getTelefone() {
+	public Long getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Number telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 
