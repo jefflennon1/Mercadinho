@@ -70,6 +70,7 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 			predicates.add(builder.like(root.get(Pessoa_.telefone),
 					"%"+pessoaFilter.getTelefone()+"%"));
 		}
+		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

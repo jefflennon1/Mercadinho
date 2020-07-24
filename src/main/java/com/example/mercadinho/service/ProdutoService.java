@@ -31,5 +31,10 @@ public class ProdutoService {
 		return produtoSalvo;
 	}
 
+	public void deletar(Long id) {
+		Produto produtoDeleta = BuscarPeloId(id);
+		produtoRepository.delete(produtoDeleta);
+	}
+
 
 }

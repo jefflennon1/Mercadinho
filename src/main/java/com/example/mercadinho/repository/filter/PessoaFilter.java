@@ -4,7 +4,16 @@ public class PessoaFilter {
 
 	private String nome;
 	
-	private Long telefone;
+	private String telefone;
+	
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
 	public String getNome() {
 		return nome;
@@ -14,13 +23,7 @@ public class PessoaFilter {
 		this.nome = nome;
 	}
 
-	public Long getTelefone() {
-		return telefone;
-	}
 
-	public void setTelefone(Long telefone) {
-		this.telefone = telefone;
-	}
 	
 	
 	
