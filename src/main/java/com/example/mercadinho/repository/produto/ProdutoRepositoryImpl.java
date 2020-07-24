@@ -38,7 +38,7 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery{
 		adicionarPaginacao(query, pageable);
 		
 		return new PageImpl<>(query.getResultList(), pageable, total(produtoFilter));
-		}
+		} 
 
 	
 

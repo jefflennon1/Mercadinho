@@ -1,23 +1,28 @@
 package com.example.mercadinho.repository.pessoa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.util.StringUtils;
 
 import com.example.mercadinho.model.Pessoa;
+import com.example.mercadinho.model.Pessoa_;
 import com.example.mercadinho.repository.filter.PessoaFilter;
 
 public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 	
-	@Autowired
+	@PersistenceContext
 	private EntityManager manager;
 
 	@Override
@@ -45,13 +50,23 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 	}
 
 	private void adicionarPaginacao(TypedQuery<Pessoa> query, Pageable pageable) {
-		// TODO Auto-generated method stub
+			 int paginaAtual = pageable.getPageNumber();
+			 int totalItensPorpagina = pageable.getPageSize();
+			 int indiceDaPagina = paginaAtual * totalItensPorpagina;
+			 
+			 query.setFirstResult(indiceDaPagina);
+			 query.setMaxResults(totalItensPorpagina);
 		
 	}
 
 	private Predicate[] adicionarRestricoes(PessoaFilter pessoaFilter, CriteriaBuilder builder, Root<Pessoa> root) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Predicate> predicates = new ArrayList<>();
+		
+		if(!StringUtils.isEmpty(pessoaFilter.getNome())) {
+			predicates.add(builder.like(builder.lower(root.get(Pessoa_.nome )),
+					"%"+pessoaFilter.getNome().toLowerCase()+"%"));
+		}
+		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 
 }
