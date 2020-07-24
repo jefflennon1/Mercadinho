@@ -66,6 +66,10 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 			predicates.add(builder.like(builder.lower(root.get(Pessoa_.nome )),
 					"%"+pessoaFilter.getNome().toLowerCase()+"%"));
 		}
+		if(!StringUtils.isEmpty(pessoaFilter.getTelefone())) {
+			predicates.add(builder.like(root.get(Pessoa_.telefone),
+					"%"+pessoaFilter.getTelefone()+"%"));
+		}
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 
