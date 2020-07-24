@@ -34,8 +34,14 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 	}
 
 	private long total(PessoaFilter pessoaFilter) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		Root<Pessoa> root = criteria.from(Pessoa.class);
 		
-		return 0;
+		Predicate[] predicates = adicionarRestricoes(pessoaFilter, builder, root);
+		criteria.where(predicates);
+		criteria.select(builder.count(root));
+		return manager.createQuery(criteria).getSingleResult();
 	}
 
 	private void adicionarPaginacao(TypedQuery<Pessoa> query, Pageable pageable) {
