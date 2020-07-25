@@ -41,4 +41,10 @@ public class PessoaService {
 		return null;
 	}
 
+	public Pessoa nova(Pessoa pessoa) {
+		//Pessoa buscaId = buscarPeloId(pessoa.getId()) 
+		Pessoa pessoaSalvar = pessoaRepository.save(pessoa);
+		return pessoaSalvar;
+	}
+
 }
