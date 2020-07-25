@@ -1,6 +1,7 @@
 package com.example.mercadinho.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,12 @@ public class ProdutoService {
 		produtoBusca.setValor(produto);
 		
 		return produtoRepository.save(produtoBusca);
+	}
+
+	public Produto atualizaValidade(Long id, LocalDate validade) {
+		Produto produto = BuscarPeloId(id);
+		produto.setValidade(validade);
+		return produtoRepository.save(produto);
 	}
 
 

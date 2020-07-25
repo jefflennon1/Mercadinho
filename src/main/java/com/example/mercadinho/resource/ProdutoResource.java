@@ -1,6 +1,7 @@
 package com.example.mercadinho.resource;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -71,6 +72,12 @@ public class ProdutoResource {
 	public ResponseEntity<Produto> atualizaValor(@PathVariable Long id, @RequestBody BigDecimal produto){
 		Produto produtoAtualizaValor = produtoService.atualizaValor(id, produto);
 		return ResponseEntity.ok(produtoAtualizaValor);
+	}
+	
+	@PutMapping("/{id}/validade")
+	public ResponseEntity<Produto> atualizaValidade(@PathVariable Long  id, @RequestBody LocalDate validade){
+		Produto atualizaValidade = produtoService.atualizaValidade(id,validade);
+		return ResponseEntity.ok(atualizaValidade);
 	}
 	
 	
