@@ -42,4 +42,10 @@ public class PessoaResource {
 		Pessoa pessoaAtualiza = pessoaService.atualiza(id,pessoa);
 		return ResponseEntity.ok(pessoaAtualiza);
 	}
+	
+	@PutMapping("/{id}/telefone")
+	public ResponseEntity<Pessoa> atualizaTel(@PathVariable Long id, @RequestBody String telefone){
+		Pessoa pessoa = pessoaService.atualizaTel(id,telefone);
+		return ResponseEntity.ok(pessoa);
+	}
 }

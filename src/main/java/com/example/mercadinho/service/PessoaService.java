@@ -28,4 +28,11 @@ public class PessoaService {
 		return pessoaAtt;
 	}
 
+	public Pessoa atualizaTel(Long id, String telefone) {
+		Pessoa pessoaTel = buscarPeloId(id);
+		pessoaTel.setTelefone(telefone);
+		
+		return pessoaRepository.save(pessoaTel);
+	}
+
 }
