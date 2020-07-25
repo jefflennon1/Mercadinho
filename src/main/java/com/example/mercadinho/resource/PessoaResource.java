@@ -52,7 +52,7 @@ public class PessoaResource {
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Pessoa> deletar(@PathVariable Long id){
-		Pessoa pessoa = pessoaService.deletar(id);
+		 pessoaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 }
