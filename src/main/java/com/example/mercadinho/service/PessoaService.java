@@ -22,4 +22,10 @@ public class PessoaService {
 		return pessoa;
 	}
 
+	public Pessoa atualiza(Long id, Pessoa pessoa) {
+		Pessoa pessoaAtt = buscarPeloId(id);
+		pessoaAtt = pessoaRepository.save(pessoa);
+		return pessoaAtt;
+	}
+
 }
