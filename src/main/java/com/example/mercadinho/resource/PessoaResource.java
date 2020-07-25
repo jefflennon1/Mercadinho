@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,5 +48,11 @@ public class PessoaResource {
 	public ResponseEntity<Pessoa> atualizaTel(@PathVariable Long id, @RequestBody String telefone){
 		Pessoa pessoa = pessoaService.atualizaTel(id,telefone);
 		return ResponseEntity.ok(pessoa);
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<Pessoa> deletar(@PathVariable Long id){
+		Pessoa pessoa = pessoaService.deletar(id);
+		return ResponseEntity.noContent().build();
 	}
 }

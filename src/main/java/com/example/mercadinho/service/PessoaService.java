@@ -35,4 +35,10 @@ public class PessoaService {
 		return pessoaRepository.save(pessoaTel);
 	}
 
+	public Pessoa deletar(Long id) {
+		Pessoa pessoa = buscarPeloId(id);
+		pessoaRepository.delete(pessoa);
+		return null;
+	}
+
 }
