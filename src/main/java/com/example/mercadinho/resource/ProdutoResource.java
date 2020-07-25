@@ -1,5 +1,7 @@
 package com.example.mercadinho.resource;
 
+import java.math.BigDecimal;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +66,12 @@ public class ProdutoResource {
 		Produto produtoAtualiza = produtoService.atualizar(id, produto);
 		return ResponseEntity.ok(produtoAtualiza);
 	}
+	
+	@PutMapping("/{id}/valor")
+	public ResponseEntity<Produto> atualizaValor(@PathVariable Long id, @RequestBody BigDecimal produto){
+		Produto produtoAtualizaValor = produtoService.atualizaValor(id, produto);
+		return ResponseEntity.ok(produtoAtualizaValor);
+	}
+	
 	
 }

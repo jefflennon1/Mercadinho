@@ -1,5 +1,7 @@
 package com.example.mercadinho.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -20,9 +22,7 @@ public class ProdutoService {
 		Produto produtoExistente = produtoRepository.findOne(id);
 		if(StringUtils.isEmpty(produtoExistente)) {
 			throw new RecursoNaoExisteException();			
-		} 
-		
-		
+		} 	
 		return produtoExistente;
 	}
 
@@ -41,6 +41,13 @@ public class ProdutoService {
 		produtoAtualiza = produtoRepository.save(produto);
 		
 		return produtoAtualiza;
+	}
+
+	public Produto atualizaValor(Long id, BigDecimal produto) {
+		Produto produtoBusca = BuscarPeloId(id);
+		produtoBusca.setValor(produto);
+		
+		return produtoRepository.save(produtoBusca);
 	}
 
 
