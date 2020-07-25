@@ -36,5 +36,12 @@ public class ProdutoService {
 		produtoRepository.delete(produtoDeleta);
 	}
 
+	public Produto atualizar(Long id, Produto produto) {
+		Produto produtoAtualiza = BuscarPeloId(id);
+		produtoAtualiza = produtoRepository.save(produto);
+		
+		return produtoAtualiza;
+	}
+
 
 }
