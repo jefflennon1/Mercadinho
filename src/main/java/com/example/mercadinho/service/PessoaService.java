@@ -47,4 +47,10 @@ public class PessoaService {
 		return pessoaSalvar;
 	}
 
+	public Pessoa atualizarEndereco(Long id, String endereco) {
+		Pessoa pessoa = buscarPeloId(id);
+		pessoa.setLougradouro(endereco);
+		return pessoa;
+	}
+
 }

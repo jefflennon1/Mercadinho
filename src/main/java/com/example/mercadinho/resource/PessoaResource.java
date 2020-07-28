@@ -66,9 +66,16 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoa);
 	}
 	
+	@PutMapping("/{id}/endereço")
+	public ResponseEntity<Pessoa> atualizarEndereço(@PathVariable Long id, @RequestBody String endereco){
+		Pessoa pessoa = pessoaService.atualizarEndereco(id,endereco);
+		return ResponseEntity.ok(pessoa);
+	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Pessoa> deletar(@PathVariable Long id){
 		 pessoaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 }
