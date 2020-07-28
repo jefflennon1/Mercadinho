@@ -55,8 +55,7 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 			 int indiceDaPagina = paginaAtual * totalItensPorpagina;
 			 
 			 query.setFirstResult(indiceDaPagina);
-			 query.setMaxResults(totalItensPorpagina);
-		
+			 query.setMaxResults(totalItensPorpagina);	
 	}
 
 	private Predicate[] adicionarRestricoes(PessoaFilter pessoaFilter, CriteriaBuilder builder, Root<Pessoa> root) {
@@ -69,8 +68,7 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery {
 		if(!StringUtils.isEmpty(pessoaFilter.getTelefone())) {
 			predicates.add(builder.like(root.get(Pessoa_.telefone),
 					"%"+pessoaFilter.getTelefone()+"%"));
-		}
-		
+		}		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

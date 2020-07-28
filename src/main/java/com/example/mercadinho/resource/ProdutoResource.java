@@ -78,7 +78,5 @@ public class ProdutoResource {
 	public ResponseEntity<Produto> atualizaValidade(@PathVariable Long  id, @RequestBody LocalDate validade){
 		Produto atualizaValidade = produtoService.atualizaValidade(id,validade);
 		return ResponseEntity.ok(atualizaValidade);
-	}
-	
-	
+	}		
 }

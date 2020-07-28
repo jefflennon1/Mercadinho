@@ -77,6 +77,5 @@ public class PessoaResource {
 	public ResponseEntity<Pessoa> deletar(@PathVariable Long id){
 		 pessoaService.deletar(id);
 		return ResponseEntity.noContent().build();
-	}
-	
+	}	
 }

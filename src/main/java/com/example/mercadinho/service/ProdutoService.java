@@ -16,9 +16,7 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
-	
-
-	
+		
 	public Produto BuscarPeloId(Long id) {
 		Produto produtoExistente = produtoRepository.findOne(id);
 		if(StringUtils.isEmpty(produtoExistente)) {
@@ -56,6 +54,5 @@ public class ProdutoService {
 		produto.setValidade(validade);
 		return produtoRepository.save(produto);
 	}
-
 
 }
