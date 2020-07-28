@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.example.mercadinho.model.Endereco;
 import com.example.mercadinho.model.Pessoa;
 import com.example.mercadinho.repository.PessoaRepository;
 import com.example.mercadinho.service.exception.RecursoNaoExisteException;
@@ -47,7 +48,7 @@ public class PessoaService {
 		return pessoaSalvar;
 	}
 
-	public Pessoa atualizarEndereco(Long id, String endereco) {
+	public Pessoa atualizarEndereco(Long id, Endereco endereco) {
 		Pessoa pessoa = buscarPeloId(id);
 		pessoa.setLougradouro(endereco);
 		return pessoa;

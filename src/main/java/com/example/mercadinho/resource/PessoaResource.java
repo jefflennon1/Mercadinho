@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mercadinho.event.MercadinhoRecursoCriadoEvent;
+import com.example.mercadinho.model.Endereco;
 import com.example.mercadinho.model.Pessoa;
 import com.example.mercadinho.repository.PessoaRepository;
 import com.example.mercadinho.repository.filter.PessoaFilter;
@@ -67,7 +68,7 @@ public class PessoaResource {
 	}
 	
 	@PutMapping("/{id}/endereço")
-	public ResponseEntity<Pessoa> atualizarEndereço(@PathVariable Long id, @RequestBody String endereco){
+	public ResponseEntity<Pessoa> atualizarEndereço(@PathVariable Long id, @RequestBody Endereco endereco){
 		Pessoa pessoa = pessoaService.atualizarEndereco(id,endereco);
 		return ResponseEntity.ok(pessoa);
 	}

@@ -3,7 +3,7 @@ package com.example.mercadinho.model;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Logradouro {
+public class Endereco {
  
 	private String rua;
 	

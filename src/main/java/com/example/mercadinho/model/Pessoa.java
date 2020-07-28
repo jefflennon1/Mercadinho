@@ -23,7 +23,7 @@ public class Pessoa {
 	private String nome;
 	
 	@Embedded
-	private Logradouro lougradouro;
+	private Endereco lougradouro;
 
 	@Size(min = 8, max = 12)
 	private String telefone;
@@ -52,11 +52,11 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public Logradouro getLougradouro() {
+	public Endereco getLougradouro() {
 		return lougradouro;
 	}
 
-	public void setLougradouro(Logradouro lougradouro) {
+	public void setLougradouro(Endereco lougradouro) {
 		this.lougradouro = lougradouro;
 	}
 
