@@ -67,7 +67,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoa);
 	}
 	
-	@PutMapping("/{id}/endereço")
+	@PutMapping("/{id}/endereco")
 	public ResponseEntity<Pessoa> atualizarEndereço(@PathVariable Long id, @RequestBody Endereco endereco){
 		Pessoa pessoa = pessoaService.atualizarEndereco(id,endereco);
 		return ResponseEntity.ok(pessoa);
