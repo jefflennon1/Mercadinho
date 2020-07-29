@@ -56,13 +56,13 @@ public class ProdutoResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produto);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Produto> deletar(@PathVariable Long id){
 		produtoService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto){
 		Produto produtoAtualiza = produtoService.atualizar(id, produto);
 		return ResponseEntity.ok(produtoAtualiza);

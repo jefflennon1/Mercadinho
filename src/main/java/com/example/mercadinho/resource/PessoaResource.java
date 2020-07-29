@@ -42,7 +42,7 @@ public class PessoaResource {
 		return pessoaRepository.filtrar(pessoaFilter, pageable);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Pessoa> buscarPessoa(@PathVariable Long id){
 		Pessoa pessoa = pessoaService.buscarPeloId(id);
 		return ResponseEntity.ok(pessoa);
@@ -55,7 +55,7 @@ public class PessoaResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaNova);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Pessoa> atualizar(@PathVariable Long id,@RequestBody Pessoa pessoa){
 		Pessoa pessoaAtualiza = pessoaService.atualiza(id,pessoa);
 		return ResponseEntity.ok(pessoaAtualiza);
@@ -73,7 +73,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoa);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Pessoa> deletar(@PathVariable Long id){
 		 pessoaService.deletar(id);
 		return ResponseEntity.noContent().build();
