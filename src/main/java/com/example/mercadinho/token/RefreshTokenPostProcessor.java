@@ -11,6 +11,7 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.http.server.ServletServerHttpResponse;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
@@ -31,9 +32,17 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 		HttpServletRequest req = ((ServletServerHttpRequest)request).getServletRequest();
 		HttpServletResponse res = ((ServletServerHttpResponse)response).getServletResponse();
 		
+		DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) body;
+		
 		String refreshToken = body.getRefreshToken().getValue();
 		adicionarRefreshTokenNoCookie(refreshToken, req, res);
-		return null;
+		removerRefreshTokenDoBody(token);
+		return body;
+	}
+
+	private void removerRefreshTokenDoBody(DefaultOAuth2AccessToken token) {
+		token.setRefreshToken(null);
+		
 	}
 
 	private void adicionarRefreshTokenNoCookie(String refreshToken, HttpServletRequest req, HttpServletResponse res) {
@@ -42,7 +51,7 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 		refreshTokenCookie.setSecure(false);//fazer em produção
 		refreshTokenCookie.setPath(req.getContentType()+"/oauth/token");
 		refreshTokenCookie.setMaxAge(2592000);
-		res.addCookie(refreshTokenCookie);
+		res.addCookie(refreshTokenCookie);x
 	}
 
 }
