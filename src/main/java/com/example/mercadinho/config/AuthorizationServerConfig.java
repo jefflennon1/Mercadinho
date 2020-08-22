@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
@@ -42,14 +43,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 
 	@Bean
-	public  AccessTokenConverter accessTokenConverter() {
+	public  JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
 		accessTokenConverter.setSigningKey("mercadinhopassword");
 		return accessTokenConverter;
 	}
 
 	@Bean
-	private TokenStore tokenStore() {		
-		return new InMemoryTokenStore();
+	public TokenStore tokenStore() {		
+		return new JwtTokenStore(accessTokenConverter());
 	}
 }
