@@ -17,8 +17,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("root").password("root").roles("ROLE");
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.
+		inMemoryAuthentication()
+		.withUser("root").password("root").
+		roles("ROLES");
 	}
 	
 	@Override

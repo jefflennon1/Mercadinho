@@ -4,15 +4,15 @@ CREATE TABLE categoria(
 	
 )ENGINE=innoDB  DEFAULT CHARSET=utf8;
 
-INSERT INTO pessoa(nome) VALUES ("Laticínios");
-INSERT INTO pessoa(nome) VALUES ("Enlatados");
-INSERT INTO pessoa(nome) VALUES ("Limpeza");
-INSERT INTO pessoa(nome) VALUES ("Grãos");
-INSERT INTO pessoa(nome) VALUES ("Frios");
-INSERT INTO pessoa(nome) VALUES ("Fast Food");
-INSERT INTO pessoa(nome) VALUES ("Bebidas em Geral");
-INSERT INTO pessoa(nome) VALUES ("Bebidas Alcoólicas");
-INSERT INTO pessoa(nome) VALUES ("Higiene Pessoal");
+INSERT INTO categoria(nome) VALUES ("Laticínios");
+INSERT INTO categoria(nome) VALUES ("Enlatados");
+INSERT INTO categoria(nome) VALUES ("Limpeza");
+INSERT INTO categoria(nome) VALUES ("Grãos");
+INSERT INTO categoria(nome) VALUES ("Frios");
+INSERT INTO categoria(nome) VALUES ("Fast Food");
+INSERT INTO categoria(nome) VALUES ("Bebidas em Geral");
+INSERT INTO categoria(nome) VALUES ("Bebidas Alcoólicas");
+INSERT INTO categoria(nome) VALUES ("Higiene Pessoal");
 
 
 

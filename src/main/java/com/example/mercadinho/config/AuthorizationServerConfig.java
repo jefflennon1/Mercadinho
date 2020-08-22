@@ -27,8 +27,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.withClient("@angular")
 		.secret("angular@angular")
 		.scopes("read","write")
-		.authorizedGrantTypes("password", "refresh_token")
-		.accessTokenValiditySeconds(20)
+		.authorizedGrantTypes("password","refresh_token")
+		.accessTokenValiditySeconds(120)
 		.refreshTokenValiditySeconds(3600 * 24);
 		
 	}
@@ -36,10 +36,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints
-		.tokenStore(tokenStore())
 		.accessTokenConverter(accessTokenConverter())
+		.authenticationManager(manager)
 		.reuseRefreshTokens(false)
-		.authenticationManager(manager);
+		.tokenStore(tokenStore());
 	}
 
 	@Bean
