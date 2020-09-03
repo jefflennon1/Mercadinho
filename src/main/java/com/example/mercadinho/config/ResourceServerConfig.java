@@ -20,8 +20,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.
 		inMemoryAuthentication()
-		.withUser("root").password("root").
-		roles("ROLES");
+		.withUser("root").password("root")
+		.roles("ROLES");
 	}
 	
 	@Override
