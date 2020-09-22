@@ -1,4 +1,4 @@
-package com.example.mercadinho.resource;
+ package com.example.mercadinho.resource;
 
 import javax.servlet.http.HttpServletResponse;
 
